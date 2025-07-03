@@ -426,41 +426,32 @@ const App = () => {
 
   return (
 
-    <div className="flex h-screen bg-gray-100">
-      <div className="w-1/2 p-4 border-r overflow-y-auto">
-      <div className="container">
-      <h1>Fraud Detection System</h1>
-      {!userConsent ? (
-        <div className="consent-box">
-          <p>We need your consent to collect data for fraud detection purposes.</p>
-          <button onClick={handleConsent}>I Agree</button>
-        </div>
-      ) : (
-        <div className="collect-box">
-          <input
-            type="text"
-            className="input-field"
-            placeholder="Type here to capture typing behavior..."
-            value={inputData}
-            onChange={handleInputChange}
-          />
-          <button onClick={collectUserData} disabled={collecting}>
-            {collecting ? 'Collecting...' : 'Collect User Data'}
-          </button>
-          {collecting && <p>Data collection in progress...</p>}
-        </div>
-      )}
-    </div>
+    <div className="min-h-screen bg-gray-100 p-4 overflow-y-auto">
+  <div className="container">
+    <h1>Fraud Detection System</h1>
+    {!userConsent ? (
+      <div className="consent-box">
+        <p>We need your consent to collect data for fraud detection purposes.</p>
+        <button onClick={handleConsent}>I Agree</button>
       </div>
-      <div className="w-1/2 p-4 overflow-y-auto">
-        {fingerprintData && (
-          <div className="response-panel">
-            <h2>Collected User Data</h2>
-            <pre>{JSON.stringify(fingerprintData, null, 2)}</pre>
-          </div>
-        )}
+    ) : (
+      <div className="collect-box">
+        <input
+          type="text"
+          className="input-field"
+          placeholder="Type here to capture typing behavior..."
+          value={inputData}
+          onChange={handleInputChange}
+        />
+        <button onClick={collectUserData} disabled={collecting}>
+          {collecting ? 'Collecting...' : 'Collect User Data'}
+        </button>
+        {collecting && <p>Data collection in progress...</p>}
       </div>
-    </div>
+    )}
+  </div>
+</div>
+
 
 
 
