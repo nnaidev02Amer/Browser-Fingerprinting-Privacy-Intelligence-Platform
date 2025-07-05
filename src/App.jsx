@@ -9,6 +9,7 @@ import DeviceFingerprint from './FingerprintCollector';
 // import ResponsePanel from './ResponsePanel';
 
 import IpInfo from './IpInfo';
+import Final from './Final';
 
 const App = () => {
   const [appResponse, setAppResponse] = useState(null);
@@ -19,7 +20,8 @@ const App = () => {
     <F2 /> 
      <IpInfo /> 
     <FingerprintCollector /> */}
-    <DeviceFingerprint />
+    {/* <DeviceFingerprint /> */}
+    <Final />
 
     </>
     
