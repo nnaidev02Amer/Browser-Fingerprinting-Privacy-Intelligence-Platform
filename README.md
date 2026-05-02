@@ -69,7 +69,7 @@ A React-based project that collects device/browser information step-by-step and 
 
 Clone the repository:
 
-git clone https://github.com/your-username/browser-fingerprint-react.git
+git clone https://github.com/sufiun27/Browser-Fingerprint-Project-React-.git
 
 Install dependencies:
 
