@@ -6,7 +6,7 @@ A React-based project that collects device/browser information step-by-step and 
 
 ---
 
-## Features
+## ✨ Features
 
 - Collect browser & device information
 - Gather hardware-related signals
@@ -18,7 +18,7 @@ A React-based project that collects device/browser information step-by-step and 
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 - React.js
 - JavaScript (ES6+)
@@ -28,55 +28,66 @@ A React-based project that collects device/browser information step-by-step and 
 
 ---
 
-## How It Works (Pipeline)
+## ⚙️ How It Works (Pipeline)
 
-1. Collect Browser Data
-2. Collect Screen & Hardware Info
-3. Collect Network / IP Info
-4. Normalize all data
-5. Generate final fingerprint string
-6. Hash the fingerprint → Unique Device ID
+1. Collect Browser Data  
+2. Collect Screen & Hardware Info  
+3. Collect Network / IP Info  
+4. Normalize all data  
+5. Generate final fingerprint string  
+6. Hash the fingerprint → Unique Device ID  
 
 ---
 
-## Data Collected
+## 📊 Data Collected
 
 ### 1. Browser Information
-- User Agent
-- Language
-- Timezone
-- Platform
-- Cookies enabled
+- User Agent  
+- Language  
+- Timezone  
+- Platform  
+- Cookies enabled  
 
 ### 2. Screen & Hardware Info
-- Screen resolution
-- Color depth
-- Device memory (if available)
-- CPU cores
-- Touch support
+- Screen resolution  
+- Color depth  
+- Device memory (if available)  
+- CPU cores  
+- Touch support  
 
 ### 3. Graphics Fingerprint
-- Canvas rendering data
-- WebGL vendor & renderer
+- Canvas rendering data  
+- WebGL vendor & renderer  
 
 ### 4. Network Information
-- Public IP address (via API)
-- Country / Region / City (optional)
+- Public IP address (via API)  
+- Country / Region / City (optional)  
 
 ---
 
-## Installation
+## 🚀 Installation
 
 Clone the repository:
 
-```bash
 git clone https://github.com/your-username/browser-fingerprint-react.git
+
+Install dependencies:
+
+npm install
+
+Start development server:
+
+npm start
+
+Build for production:
+
+npm run build
 
 ---
 
-## Signature
+## 👨‍💻 Signature
 
-👨‍💻 Built with dedication by:
+Built with dedication by:
 
 **Abu Sufiun**  
 Backend Software Engineer | Scalable Systems & API Specialist  
