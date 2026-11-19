@@ -313,17 +313,3 @@ Screenshots have not been added yet. Replace each placeholder below with an imag
 - Collect consented, anonymous reference data to support honest uniqueness estimates (this would need a backend and ethics review, which the project deliberately does not have today).
 - Add a translated interface and more guided experiment scenarios.
 
-## 13. Attribution and licensing
-
-This project is derived from **Browser-Fingerprint-Project-React** by **Abu Sufiun**: <https://github.com/sufiun27/Browser-Fingerprint-Project-React>.
-
-**Licensing is unresolved.**
-
-- No `LICENSE` file is present and `package.json` declares no `license`, so this project does not grant or claim any licence. Confirm reuse terms with the original author before redistributing or publishing it beyond an academic submission.
-- **FingerprintJS 4.6.2 uses the Business Source License 1.1 (`BUSL-1.1`)**, which is not a permissive licence and grants no production use. Read `node_modules/@fingerprintjs/fingerprintjs/LICENSE` and the [BSL 1.1 text](https://mariadb.com/bsl11/). Versions 5.0.0 and later are reported to be MIT-licensed, but this project has not been migrated. Ask your supervisor whether the current use is acceptable. This README is not legal advice.
-- The other main dependencies (React, Tailwind CSS, Vite, Vitest, jsdom, Testing Library) are MIT-licensed according to their installed `package.json` files.
-
----
-
-**Original author:** Abu Sufiun, Backend Software Engineer
-GitHub: <https://github.com/sufiun27> · LinkedIn: <https://linkedin.com/in/abu-sufiun>
