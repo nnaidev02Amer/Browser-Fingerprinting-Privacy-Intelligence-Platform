@@ -1,0 +1,31 @@
+name: CI
+
+# Lightweight checks only: install, lint, unit tests, production build.
+# The real-browser check (`npm run test:browser`) is intentionally not run here: Chrome/Edge availability on
+# hosted runners has not been verified for this project. Run it locally before submission.
+# No secrets, no deployment, and no upload of any data (including fingerprint data).
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build

@@ -1,1 +1,120 @@
 @import "tailwindcss";
+
+/*
+ * Visual identity: an editorial, dark graphite interface (inspired by premium product sites).
+ * - Neutrals are a warm graphite ramp. The ramp keeps its role names (950 = page, 900 = card, 700 = hairline
+ *   border, 50 = headings) so every component shares one palette; only the values differ.
+ * - Accent: muted sage for interaction; clay for small editorial labels; ochre = caution, moss = good, brick = error.
+ * - Offline-safe: system font stacks only, no web fonts, no external assets.
+ */
+@theme {
+  --font-sans: "Inter", "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Space Grotesk", "Bahnschrift", "Segoe UI Variable Display", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+
+  --color-slate-50: #f5f4ee;
+  --color-slate-100: #e8e9e1;
+  --color-slate-200: #d3d6cd;
+  --color-slate-300: #b9beb5;
+  --color-slate-400: #9aa097;
+  --color-slate-500: #5d625c;
+  --color-slate-600: #3a3e3a;
+  --color-slate-700: #2a2d2a;
+  --color-slate-800: #1e211f;
+  --color-slate-900: #151716;
+  --color-slate-950: #0d0f0e;
+
+  --color-cyan-100: #e3efe0;
+  --color-cyan-200: #cfe2cb;
+  --color-cyan-300: #a7c9a1;
+  --color-cyan-400: #b4d3ae;
+  --color-cyan-500: #8fb88a;
+  --color-cyan-700: #4b6a47;
+  --color-cyan-800: #34502f;
+  --color-cyan-900: #223621;
+  --color-cyan-950: #172419;
+
+  --color-clay-100: #251a15;
+  --color-clay-300: #c98462;
+  --color-clay-400: #d08a6a;
+  --color-clay-500: #e0a98b;
+
+  --color-amber-100: #f3dcae;
+  --color-amber-200: #ecca8e;
+  --color-amber-300: #e3b868;
+  --color-amber-400: #d9a441;
+  --color-amber-800: #5c4720;
+  --color-amber-950: #261e10;
+
+  --color-emerald-200: #b9e0bf;
+  --color-emerald-300: #9ad0a3;
+  --color-emerald-400: #7fbf8a;
+  --color-emerald-800: #2f5236;
+  --color-emerald-950: #14231a;
+
+  --color-red-100: #f8cbc6;
+  --color-red-200: #f0aaa3;
+  --color-red-300: #e58b82;
+  --color-red-500: #c85a50;
+  --color-red-600: #b4443c;
+  --color-red-800: #6b2e2a;
+  --color-red-950: #2a1614;
+}
+
+@layer base {
+  html { color-scheme: dark; }
+  body {
+    background-color: var(--color-slate-950);
+    font-feature-settings: "tnum" 1, "cv11" 1;
+    letter-spacing: -0.003em;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: rgb(143 184 138 / 0.3); }
+  /* Scrollbars that match the theme (Firefox + Chromium). */
+  * { scrollbar-width: thin; scrollbar-color: var(--color-slate-600) transparent; }
+}
+
+/* ---- Surfaces: graphite cards with a hairline border; no shadows or glows. ---- */
+@layer components {
+  .surface {
+    background-color: var(--color-slate-900);
+    border: 1px solid var(--color-slate-700);
+    transition: border-color 160ms ease, background-color 160ms ease;
+  }
+  .surface:hover { border-color: var(--color-slate-600); }
+
+  /* Small tracked uppercase label used above headings and for field names. */
+  .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+
+  /* Expandable rows (<details>): one consistent chevron instead of the browser default marker. */
+  details > summary { list-style: none; position: relative; padding-right: 2rem; }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::after {
+    content: ""; position: absolute; right: 0.75rem; top: 50%; width: 0.45rem; height: 0.45rem;
+    border-right: 2px solid var(--color-slate-500); border-bottom: 2px solid var(--color-slate-500);
+    transform: translateY(-70%) rotate(45deg); transition: transform 160ms ease;
+  }
+  details[open] > summary::after { transform: translateY(-30%) rotate(-135deg); }
+}
+
+/* ---- Meaningful motion: orientation (view changes) and feedback (progress, skeletons). Never decorative. ---- */
+@keyframes view-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes soft-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+@keyframes grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes grow-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+.motion-view { animation: view-in 180ms ease-out both; }
+.motion-grow-x { transform-origin: left center; animation: grow-x 420ms cubic-bezier(.2,.7,.2,1) both; }
+.motion-grow-y { transform-origin: bottom center; animation: grow-y 420ms cubic-bezier(.2,.7,.2,1) both; }
+.skeleton {
+  background-color: var(--color-slate-700);
+  animation: soft-pulse 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-view, .motion-grow-x, .motion-grow-y, .skeleton { animation: none !important; }
+  * { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---- Print: the in-app views are not meant for printing; the downloadable report is. ---- */
+@media print { body { background: white; } }

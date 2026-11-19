@@ -5,7 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'test-results']),
   {
     files: ['**/*.{js,jsx}'],
     extends: [
@@ -25,5 +25,12 @@ export default defineConfig([
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
+  },
+  {
+    // Node scripts (the browser regression runner) use Node globals, not browser ones.
+    files: ['scripts/**/*.mjs'],
+    extends: [js.configs.recommended],
+    languageOptions: { ecmaVersion: 'latest', sourceType: 'module', globals: { ...globals.node, WebSocket: 'readonly', fetch: 'readonly' } },
+    rules: { 'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }] },
   },
 ])
